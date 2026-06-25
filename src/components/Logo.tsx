@@ -5,10 +5,19 @@ export default function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <div className="flex items-center gap-2 select-none">
       <svg viewBox="0 0 32 32" className="w-7 h-7 shrink-0" aria-hidden>
-        <path
-          fill="#2563EB"
-          d="M6 26c6-2 8-8 9-14 3 5 2 11-3 14 5 0 9-4 10-9 1 6-2 12-8 14-5 1-12-1-15-5 2 1 5 1 7 0z"
-        />
+        <circle cx="16" cy="16" r="13" fill="#1E3A8A" />
+        <g
+          fill="none"
+          stroke="#93C5FD"
+          strokeWidth="1.2"
+          strokeLinecap="round"
+        >
+          <ellipse cx="16" cy="16" rx="6.5" ry="13" />
+          <line x1="3" y1="16" x2="29" y2="16" />
+          <path d="M5 10.5 H27" />
+          <path d="M5 21.5 H27" />
+        </g>
+        <circle cx="16" cy="16" r="13" fill="none" stroke="#2563EB" strokeWidth="1.5" />
       </svg>
       {!compact && (
         <div className="leading-none">

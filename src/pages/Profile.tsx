@@ -54,9 +54,9 @@ export default function Profile() {
             🧑‍🎓
           </div>
           <div>
-            <div className="font-bold text-slate-900 dark:text-white">Alex Ivanov</div>
+            <div className="font-bold text-slate-900 dark:text-white">Alex Taylor</div>
             <div className="text-sm text-slate-500 dark:text-slate-400">
-              {t('student')} · B51125
+              {t('student')} · Б1125-38.03.01
             </div>
           </div>
         </Card>
