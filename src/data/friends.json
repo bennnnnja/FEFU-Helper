@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Li Wei", "emoji": "🧑‍🎓", "native": "zh", "learning": "ru", "interestsEn": "Basketball, photography", "interestsRu": "Баскетбол, фотография" },
+  { "id": 2, "name": "Anna Smith", "emoji": "👩‍🎓", "native": "en", "learning": "ru", "interestsEn": "Hiking, books", "interestsRu": "Походы, книги" },
+  { "id": 3, "name": "Dmitry Ivanov", "emoji": "🧑", "native": "ru", "learning": "en", "interestsEn": "Coding, chess", "interestsRu": "Программирование, шахматы" },
+  { "id": 4, "name": "Mei Chen", "emoji": "👩", "native": "zh", "learning": "en", "interestsEn": "Cooking, music", "interestsRu": "Кулинария, музыка" },
+  { "id": 5, "name": "John Brown", "emoji": "🧔", "native": "en", "learning": "zh", "interestsEn": "Football, travel", "interestsRu": "Футбол, путешествия" },
+  { "id": 6, "name": "Olga Petrova", "emoji": "👧", "native": "ru", "learning": "zh", "interestsEn": "Dancing, languages", "interestsRu": "Танцы, языки" }
+]

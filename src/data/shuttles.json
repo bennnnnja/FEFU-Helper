@@ -1,0 +1,6 @@
+[
+  { "id": 1, "routeEn": "Campus ↔ Russky Bridge", "routeRu": "Кампус ↔ Русский мост", "departures": ["07:30", "08:30", "10:00", "12:00", "14:00", "16:00", "18:00"] },
+  { "id": 2, "routeEn": "Campus ↔ City center", "routeRu": "Кампус ↔ Центр города", "departures": ["08:00", "11:00", "13:30", "17:00", "19:30"] },
+  { "id": 3, "routeEn": "Dorms ↔ Building G", "routeRu": "Общежития ↔ Корпус G", "departures": ["07:45", "08:15", "08:45", "09:15", "13:00", "17:30"] },
+  { "id": 4, "routeEn": "Campus ↔ Airport", "routeRu": "Кампус ↔ Аэропорт", "departures": ["06:00", "12:00", "18:00"] }
+]

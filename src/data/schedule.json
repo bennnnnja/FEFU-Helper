@@ -1,0 +1,39 @@
+{
+  "days": [
+    { "key": "mon", "labelEn": "Mon", "labelRu": "Пн", "date": "Apr 13" },
+    { "key": "tue", "labelEn": "Tue", "labelRu": "Вт", "date": "Apr 14" },
+    { "key": "wed", "labelEn": "Wed", "labelRu": "Ср", "date": "Apr 15" },
+    { "key": "thu", "labelEn": "Thu", "labelRu": "Чт", "date": "Apr 16" },
+    { "key": "fri", "labelEn": "Fri", "labelRu": "Пт", "date": "Apr 17" },
+    { "key": "sat", "labelEn": "Sat", "labelRu": "Сб", "date": "Apr 18" },
+    { "key": "sun", "labelEn": "Sun", "labelRu": "Вс", "date": "Apr 19" }
+  ],
+  "lessons": {
+    "thu": [
+      { "from": "10:10", "to": "11:40", "room": "G411", "titleEn": "Fundamentals of Digital Literacy", "titleRu": "Основы цифровой грамотности", "typeEn": "Practical session", "typeRu": "Практическое занятие" },
+      { "from": "11:50", "to": "13:20", "room": "G708", "titleEn": "Fundamentals of Project Activities 2", "titleRu": "Основы проектной деятельности 2", "typeEn": "Practical session", "typeRu": "Практическое занятие" },
+      { "from": "13:30", "to": "15:00", "room": "—", "titleEn": "Elective Course in Physical Culture and Sports", "titleRu": "Элективный курс по физической культуре и спорту", "typeEn": "Practical session", "typeRu": "Практическое занятие" },
+      { "from": "15:10", "to": "16:40", "room": "G701", "titleEn": "Logistics", "titleRu": "Логистика", "typeEn": "Practical session", "typeRu": "Практическое занятие" },
+      { "from": "16:50", "to": "18:20", "room": "G615", "titleEn": "Supply Chain Management", "titleRu": "Управление цепями поставок", "typeEn": "Practical session", "typeRu": "Практическое занятие" }
+    ],
+    "mon": [
+      { "from": "08:30", "to": "10:00", "room": "D733", "titleEn": "Higher Mathematics", "titleRu": "Высшая математика", "typeEn": "Lecture", "typeRu": "Лекция" },
+      { "from": "10:10", "to": "11:40", "room": "D640", "titleEn": "Economic Theory", "titleRu": "Экономическая теория", "typeEn": "Lecture", "typeRu": "Лекция" },
+      { "from": "11:50", "to": "13:20", "room": "G411", "titleEn": "Foreign Language", "titleRu": "Иностранный язык", "typeEn": "Practical session", "typeRu": "Практическое занятие" }
+    ],
+    "tue": [
+      { "from": "10:10", "to": "11:40", "room": "E807", "titleEn": "Information Technology", "titleRu": "Информационные технологии", "typeEn": "Lecture", "typeRu": "Лекция" },
+      { "from": "11:50", "to": "13:20", "room": "E807", "titleEn": "Information Technology", "titleRu": "Информационные технологии", "typeEn": "Practical session", "typeRu": "Практическое занятие" }
+    ],
+    "wed": [
+      { "from": "13:30", "to": "15:00", "room": "G701", "titleEn": "Logistics", "titleRu": "Логистика", "typeEn": "Lecture", "typeRu": "Лекция" },
+      { "from": "15:10", "to": "16:40", "room": "G615", "titleEn": "Supply Chain Management", "titleRu": "Управление цепями поставок", "typeEn": "Lecture", "typeRu": "Лекция" }
+    ],
+    "fri": [
+      { "from": "10:10", "to": "11:40", "room": "G708", "titleEn": "Project Management", "titleRu": "Управление проектами", "typeEn": "Practical session", "typeRu": "Практическое занятие" },
+      { "from": "11:50", "to": "13:20", "room": "D733", "titleEn": "Philosophy", "titleRu": "Философия", "typeEn": "Lecture", "typeRu": "Лекция" }
+    ],
+    "sat": [],
+    "sun": []
+  }
+}

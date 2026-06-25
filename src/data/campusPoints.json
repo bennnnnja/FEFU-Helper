@@ -1,0 +1,16 @@
+[
+  { "id": "g", "category": "buildings", "lat": 43.0254, "lng": 131.8916, "titleEn": "Building G", "titleRu": "Корпус G", "descEn": "Main academic building G", "descRu": "Главный учебный корпус G" },
+  { "id": "a", "category": "buildings", "lat": 43.0246, "lng": 131.8932, "titleEn": "Building A", "titleRu": "Корпус A", "descEn": "Academic building A", "descRu": "Учебный корпус A" },
+  { "id": "h", "category": "buildings", "lat": 43.0268, "lng": 131.8951, "titleEn": "Building H", "titleRu": "Корпус H", "descEn": "Academic building H", "descRu": "Учебный корпус H" },
+  { "id": "m", "category": "buildings", "lat": 43.0239, "lng": 131.8901, "titleEn": "Building M", "titleRu": "Корпус M", "descEn": "Academic building M", "descRu": "Учебный корпус M" },
+  { "id": "biofood", "category": "food", "lat": 43.0259, "lng": 131.8898, "titleEn": "Biofood canteen", "titleRu": "Столовая Biofood", "descEn": "Canteen with hot meals", "descRu": "Столовая с горячими блюдами" },
+  { "id": "canteen", "category": "food", "lat": 43.0249, "lng": 131.8946, "titleEn": "Canteen", "titleRu": "Столовая", "descEn": "Student canteen", "descRu": "Студенческая столовая" },
+  { "id": "cafeteria", "category": "food", "lat": 43.0271, "lng": 131.8929, "titleEn": "Cafeteria", "titleRu": "Кафетерий", "descEn": "Coffee and snacks", "descRu": "Кофе и закуски" },
+  { "id": "sport", "category": "buildings", "lat": 43.0232, "lng": 131.8959, "titleEn": "Sports Complex", "titleRu": "Спорткомплекс", "descEn": "Gym, pool and arenas", "descRu": "Зал, бассейн и арены" },
+  { "id": "dorm10", "category": "buildings", "lat": 43.0285, "lng": 131.8902, "titleEn": "Dormitory 10", "titleRu": "Общежитие 10", "descEn": "Student dormitory", "descRu": "Студенческое общежитие" },
+  { "id": "dorm14", "category": "buildings", "lat": 43.0291, "lng": 131.8925, "titleEn": "Dormitory 14", "titleRu": "Общежитие 14", "descEn": "Student dormitory", "descRu": "Студенческое общежитие" },
+  { "id": "shuttle-main", "category": "transport", "lat": 43.0252, "lng": 131.8889, "titleEn": "Shuttle stop (Central)", "titleRu": "Остановка шаттла (Центральная)", "descEn": "Campus shuttle main stop", "descRu": "Главная остановка кампусного шаттла" },
+  { "id": "shuttle-dorm", "category": "transport", "lat": 43.0288, "lng": 131.8912, "titleEn": "Shuttle stop (Dorms)", "titleRu": "Остановка шаттла (Общежития)", "descEn": "Shuttle stop near dormitories", "descRu": "Остановка шаттла у общежитий" },
+  { "id": "library", "category": "buildings", "lat": 43.0261, "lng": 131.8938, "titleEn": "Library", "titleRu": "Библиотека", "descEn": "Scientific library", "descRu": "Научная библиотека" },
+  { "id": "embankment", "category": "attractions", "lat": 43.0228, "lng": 131.8875, "titleEn": "Ayaks Bay embankment", "titleRu": "Набережная бухты Аякс", "descEn": "Seaside promenade", "descRu": "Морская набережная" }
+]

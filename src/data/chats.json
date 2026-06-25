@@ -1,0 +1,89 @@
+[
+  {
+    "id": "friends",
+    "name": "Friends",
+    "emoji": "🥳",
+    "type": "group",
+    "members": 12,
+    "time": "12:30",
+    "unread": 3,
+    "lastEn": "Maria: See you tonight!",
+    "lastRu": "Мария: Увидимся вечером!",
+    "messages": [
+      { "id": 1, "author": "Maria", "mine": false, "textEn": "Hi everyone! Don't forget about tomorrow's meeting", "textRu": "Всем привет! Не забудьте про завтрашнюю встречу", "time": "12:20" },
+      { "id": 2, "author": "me", "mine": true, "textEn": "Thanks for the reminder!", "textRu": "Спасибо, что напомнила!", "time": "12:25" },
+      { "id": 3, "author": "Ivan", "mine": false, "textEn": "What time exactly?", "textRu": "Во сколько именно?", "time": "12:28" },
+      { "id": 4, "author": "Maria", "mine": false, "textEn": "See you tonight!", "textRu": "Увидимся вечером!", "time": "12:30" }
+    ]
+  },
+  {
+    "id": "hostel",
+    "name": "Hostel",
+    "emoji": "🏠",
+    "type": "group",
+    "members": 8,
+    "time": "11:45",
+    "unread": 1,
+    "lastEn": "Hot water is back on floor 7",
+    "lastRu": "На 7 этаже снова есть горячая вода",
+    "messages": [
+      { "id": 1, "author": "Admin", "mine": false, "textEn": "Hot water is back on floor 7", "textRu": "На 7 этаже снова есть горячая вода", "time": "11:45" }
+    ]
+  },
+  {
+    "id": "university",
+    "name": "University",
+    "emoji": "🎓",
+    "type": "group",
+    "members": 25,
+    "time": "yesterday",
+    "unread": 0,
+    "lastEn": "Lecture moved to room G708",
+    "lastRu": "Лекцию перенесли в аудиторию G708",
+    "messages": [
+      { "id": 1, "author": "Dean", "mine": false, "textEn": "Lecture moved to room G708", "textRu": "Лекцию перенесли в аудиторию G708", "time": "18:00" }
+    ]
+  },
+  {
+    "id": "newfriends",
+    "name": "New friends",
+    "emoji": "✨",
+    "type": "group",
+    "members": 15,
+    "time": "yesterday",
+    "unread": 2,
+    "lastEn": "Anyone up for the city tour?",
+    "lastRu": "Кто-нибудь хочет на экскурсию по городу?",
+    "messages": [
+      { "id": 1, "author": "Li", "mine": false, "textEn": "Anyone up for the city tour?", "textRu": "Кто-нибудь хочет на экскурсию по городу?", "time": "16:10" }
+    ]
+  },
+  {
+    "id": "football",
+    "name": "Football",
+    "emoji": "⚽",
+    "type": "group",
+    "members": 10,
+    "time": "Mon",
+    "unread": 0,
+    "lastEn": "Match on Saturday at the sports complex",
+    "lastRu": "Матч в субботу у спорткомплекса",
+    "messages": [
+      { "id": 1, "author": "Coach", "mine": false, "textEn": "Match on Saturday at the sports complex", "textRu": "Матч в субботу у спорткомплекса", "time": "09:00" }
+    ]
+  },
+  {
+    "id": "maria",
+    "name": "Maria",
+    "emoji": "👩",
+    "type": "contact",
+    "members": 1,
+    "time": "10:05",
+    "unread": 0,
+    "lastEn": "See you in class",
+    "lastRu": "Увидимся на паре",
+    "messages": [
+      { "id": 1, "author": "Maria", "mine": false, "textEn": "See you in class", "textRu": "Увидимся на паре", "time": "10:05" }
+    ]
+  }
+]

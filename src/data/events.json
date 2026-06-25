@@ -1,0 +1,7 @@
+[
+  { "id": 1, "emoji": "🚪", "date": "2026-06-25", "titleEn": "Open Doors Day at FEFU", "titleRu": "День открытых дверей в ДВФУ", "descEn": "Tour the campus and meet the faculties", "descRu": "Экскурсия по кампусу и знакомство с факультетами" },
+  { "id": 2, "emoji": "🎤", "date": "2026-06-28", "titleEn": "Student Spring Concert", "titleRu": "Концерт «Студенческая весна»", "descEn": "Music and performances at the main hall", "descRu": "Музыка и выступления в главном зале" },
+  { "id": 3, "emoji": "💼", "date": "2026-07-02", "titleEn": "Career Fair", "titleRu": "Ярмарка вакансий", "descEn": "Meet employers from the region", "descRu": "Встреча с работодателями региона" },
+  { "id": 4, "emoji": "🌊", "date": "2026-07-05", "titleEn": "Beach Volleyball Cup", "titleRu": "Кубок по пляжному волейболу", "descEn": "Tournament at Ayaks Bay", "descRu": "Турнир на бухте Аякс" },
+  { "id": 5, "emoji": "🧪", "date": "2026-07-10", "titleEn": "Science Hackathon", "titleRu": "Научный хакатон", "descEn": "48 hours of projects and prizes", "descRu": "48 часов проектов и призов" }
+]

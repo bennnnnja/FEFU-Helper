@@ -1,0 +1,13 @@
+[
+  { "id": "stilo", "category": "sight", "lat": 43.1187, "lng": 131.8826, "titleEn": "Golden Bridge", "titleRu": "Золотой мост", "descEn": "Iconic bridge over the Golden Horn Bay", "descRu": "Знаменитый мост через бухту Золотой Рог" },
+  { "id": "lighthouse", "category": "sight", "lat": 43.0772, "lng": 131.8447, "titleEn": "Tokarevsky Lighthouse", "titleRu": "Токаревский маяк", "descEn": "Famous lighthouse on a spit", "descRu": "Знаменитый маяк на косе" },
+  { "id": "eagle", "category": "sight", "lat": 43.1155, "lng": 131.8932, "titleEn": "Eagle's Nest viewpoint", "titleRu": "Сопка Орлиное гнездо", "descEn": "Best city panorama", "descRu": "Лучшая панорама города" },
+  { "id": "central", "category": "mall", "lat": 43.1167, "lng": 131.8825, "titleEn": "Central Mall", "titleRu": "ТЦ «Центральный»", "descEn": "Shopping center downtown", "descRu": "Торговый центр в центре города" },
+  { "id": "calina", "category": "mall", "lat": 43.1722, "lng": 131.9281, "titleEn": "Calina Mall", "titleRu": "ТРЦ «Калина Молл»", "descEn": "Large shopping & entertainment center", "descRu": "Большой торгово-развлекательный центр" },
+  { "id": "samberi", "category": "shop", "lat": 43.1289, "lng": 131.9015, "titleEn": "Sambery supermarket", "titleRu": "Супермаркет «Самбери»", "descEn": "Grocery hypermarket", "descRu": "Продуктовый гипермаркет" },
+  { "id": "fresh25", "category": "shop", "lat": 43.1102, "lng": 131.8801, "titleEn": "Fresh25 store", "titleRu": "Магазин «Фреш25»", "descEn": "Local grocery chain", "descRu": "Местная продуктовая сеть" },
+  { "id": "hospital1", "category": "hospital", "lat": 43.1216, "lng": 131.8945, "titleEn": "City Clinical Hospital No.1", "titleRu": "ГКБ №1", "descEn": "Major city hospital", "descRu": "Крупная городская больница" },
+  { "id": "medcenter", "category": "hospital", "lat": 43.0301, "lng": 131.8954, "titleEn": "FEFU Medical Center", "titleRu": "Медцентр ДВФУ", "descEn": "University medical center on campus", "descRu": "Медцентр университета на кампусе" },
+  { "id": "pharm-monastyr", "category": "pharmacy", "lat": 43.1175, "lng": 131.8852, "titleEn": "Monastyrev Pharmacy", "titleRu": "Аптека «Монастырёв»", "descEn": "24/7 pharmacy chain", "descRu": "Круглосуточная сеть аптек" },
+  { "id": "pharm-campus", "category": "pharmacy", "lat": 43.0266, "lng": 131.8909, "titleEn": "Campus Pharmacy", "titleRu": "Аптека на кампусе", "descEn": "Pharmacy near building G", "descRu": "Аптека рядом с корпусом G" }
+]

@@ -1,0 +1,7 @@
+[
+  { "id": 1, "type": "schedule", "time": "10:32", "titleEn": "Schedule Update", "titleRu": "Изменение в расписании", "textEn": "The class \"Project Management\" has been rescheduled to June 26 at 10:10", "textRu": "Занятие «Управление проектами» перенесено на 26 июня в 10:10" },
+  { "id": 2, "type": "university", "time": "09:15", "titleEn": "University", "titleRu": "Университет", "textEn": "Open Doors Day at FEFU will take place on June 25", "textRu": "День открытых дверей в ДВФУ пройдёт 25 июня" },
+  { "id": 3, "type": "chat", "time": "yesterday", "titleEn": "Chat: Group B51125", "titleRu": "Чат: Группа B51125", "textEn": "Maria: Hi everyone! Don't forget about tomorrow's meeting", "textRu": "Мария: Всем привет! Не забудьте про завтрашнюю встречу" },
+  { "id": 4, "type": "university", "time": "Mon", "titleEn": "Library", "titleRu": "Библиотека", "textEn": "Your reserved book is ready for pickup", "textRu": "Забронированная книга готова к выдаче" },
+  { "id": 5, "type": "schedule", "time": "Mon", "titleEn": "Exam", "titleRu": "Экзамен", "textEn": "Logistics exam consultation on July 1", "textRu": "Консультация перед экзаменом по логистике 1 июля" }
+]
