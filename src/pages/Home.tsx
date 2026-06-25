@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Calendar, Map as MapIcon, CloudSun, MessageCircle, Search, Bell, ArrowRight } from 'lucide-react'
 import TopBar from '../components/TopBar'
 import Card from '../components/Card'
+import Avatar from '../components/Avatar'
 import MapView from '../components/MapView'
 import { useLang } from '../context/LangContext'
 import { fetchWeather, weatherEmoji, type FullWeather } from '../lib/weather'
@@ -58,6 +59,9 @@ export default function Home() {
             <span className="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-brand text-white text-[10px] grid place-items-center">
               3
             </span>
+          </button>
+          <button onClick={() => navigate('/profile')} aria-label={t('profileTitle')}>
+            <Avatar size={40} className="ring-2 ring-white dark:ring-night-card shadow-sm" />
           </button>
         </div>
       </section>

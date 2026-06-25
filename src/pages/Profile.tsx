@@ -16,6 +16,7 @@ import {
 } from 'lucide-react'
 import TopBar from '../components/TopBar'
 import Card from '../components/Card'
+import Avatar from '../components/Avatar'
 import { useLang } from '../context/LangContext'
 import { useTheme } from '../context/ThemeContext'
 import type { Lang, TranslationKey } from '../i18n'
@@ -50,9 +51,7 @@ export default function Profile() {
       <div className="px-4 space-y-4">
         {/* Profile card */}
         <Card className="p-4 flex items-center gap-3">
-          <div className="h-14 w-14 rounded-full bg-brand/10 grid place-items-center text-2xl">
-            🧑‍🎓
-          </div>
+          <Avatar size={56} />
           <div>
             <div className="font-bold text-slate-900 dark:text-white">Alex Taylor</div>
             <div className="text-sm text-slate-500 dark:text-slate-400">
