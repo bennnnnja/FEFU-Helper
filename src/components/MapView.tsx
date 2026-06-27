@@ -67,12 +67,10 @@ function LeafletMap({ points, center, zoom = 15, className = '' }: MapViewProps)
       center={center}
       zoom={zoom}
       scrollWheelZoom
+      attributionControl={false}
       className={'w-full h-full ' + className}
     >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Recenter center={center} zoom={zoom} />
       {points.map((p) => (
         <Marker key={p.id} position={[p.lat, p.lng]} icon={markerIcon(p.category)}>
