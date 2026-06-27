@@ -10,7 +10,8 @@ export default function Events() {
       <PageHeader title={t('eventsTitle')} />
       <div className="px-4 space-y-3">
         {events.map((e) => {
-          const date = new Date(e.date).toLocaleDateString(lang === 'ru' ? 'ru-RU' : 'en-US', {
+          const locale = lang === 'ru' ? 'ru-RU' : lang === 'zh' ? 'zh-CN' : 'en-US'
+          const date = new Date(e.date).toLocaleDateString(locale, {
             day: 'numeric',
             month: 'long',
           })

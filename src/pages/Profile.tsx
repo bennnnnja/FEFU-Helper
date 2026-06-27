@@ -19,7 +19,7 @@ import Card from '../components/Card'
 import Avatar from '../components/Avatar'
 import { useLang } from '../context/LangContext'
 import { useTheme } from '../context/ThemeContext'
-import type { Lang, TranslationKey } from '../i18n'
+import { LANGS, type TranslationKey } from '../i18n'
 
 const menu: { icon: typeof Users; label: TranslationKey; to: string }[] = [
   { icon: Users, label: 'groupSearch', to: '/chats' },
@@ -104,12 +104,12 @@ export default function Profile() {
           <div className="flex items-center justify-between">
             <span className="text-sm text-slate-700 dark:text-slate-200">{t('language')}</span>
             <div className="flex bg-canvas dark:bg-slate-800 rounded-full p-1">
-              {(['ru', 'en'] as Lang[]).map((l) => (
+              {LANGS.map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
                   className={
-                    'px-4 h-8 rounded-full text-sm font-semibold transition-colors ' +
+                    'px-3 h-8 rounded-full text-sm font-semibold transition-colors ' +
                     (lang === l ? 'bg-brand text-white' : 'text-slate-500 dark:text-slate-300')
                   }
                 >

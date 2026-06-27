@@ -26,7 +26,7 @@ interface MapViewProps {
  * When false (default) the free OpenStreetMap / Leaflet renderer is used,
  * which requires no API key.
  */
-export const USE_YANDEX_MAPS = false
+export const USE_YANDEX_MAPS = true
 
 const CATEGORY_COLORS: Record<string, string> = {
   food: '#F59E0B',
@@ -114,6 +114,24 @@ function loadYandexScript(key: string): Promise<any> {
   })
 }
 
+/** Inject the marker / balloon styles once. */
+function ensureYandexMarkerStyles() {
+  if (document.getElementById('fefu-ymap-styles')) return
+  const style = document.createElement('style')
+  style.id = 'fefu-ymap-styles'
+  style.textContent = `
+    .fefu-ym-marker{position:relative;transform:translate(-50%,-50%);cursor:pointer}
+    .fefu-ym-dot{width:18px;height:18px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+    .fefu-ym-balloon{position:absolute;left:50%;bottom:24px;transform:translateX(-50%);
+      width:max-content;max-width:200px;background:#fff;color:#0f172a;border-radius:12px;
+      padding:8px 10px;box-shadow:0 6px 20px rgba(0,0,0,.25);display:none;z-index:10}
+    .fefu-ym-marker.open .fefu-ym-balloon{display:block}
+    .fefu-ym-balloon b{display:block;font-size:13px;margin-bottom:2px}
+    .fefu-ym-balloon span{font-size:12px;color:#475569}
+  `
+  document.head.appendChild(style)
+}
+
 function YandexMap({ points, center, zoom = 15, className = '' }: MapViewProps) {
   const { lang } = useLang()
   const ref = useRef<HTMLDivElement>(null)
@@ -121,7 +139,9 @@ function YandexMap({ points, center, zoom = 15, className = '' }: MapViewProps) 
   useEffect(() => {
     const key = import.meta.env.VITE_YANDEX_MAPS_KEY
     if (!key || !ref.current) return
+    ensureYandexMarkerStyles()
     let map: any
+    let openEl: HTMLElement | null = null
     loadYandexScript(key).then((ymaps3) => {
       if (!ref.current) return
       const { YMap, YMapDefaultSchemeLayer, YMapDefaultFeaturesLayer, YMapMarker } = ymaps3
@@ -131,13 +151,26 @@ function YandexMap({ points, center, zoom = 15, className = '' }: MapViewProps) 
       map.addChild(new YMapDefaultSchemeLayer())
       map.addChild(new YMapDefaultFeaturesLayer())
       points.forEach((p) => {
-        const el = document.createElement('div')
-        el.style.cssText = `background:${
-          CATEGORY_COLORS[p.category] ?? '#2563EB'
-        };width:16px;height:16px;border-radius:50%;border:2px solid white;cursor:pointer`
-        el.title = lang === 'ru' ? p.titleRu : p.titleEn
-        map.addChild(new YMapMarker({ coordinates: [p.lng, p.lat] }, el))
+        const title = lang === 'ru' ? p.titleRu : p.titleEn
+        const desc = lang === 'ru' ? p.descRu : p.descEn
+        const wrap = document.createElement('div')
+        wrap.className = 'fefu-ym-marker'
+        wrap.innerHTML =
+          `<div class="fefu-ym-dot" style="background:${CATEGORY_COLORS[p.category] ?? '#2563EB'}"></div>` +
+          `<div class="fefu-ym-balloon"><b></b><span></span></div>`
+        ;(wrap.querySelector('b') as HTMLElement).textContent = title
+        ;(wrap.querySelector('span') as HTMLElement).textContent = desc
+        wrap.addEventListener('click', (e) => {
+          e.stopPropagation()
+          if (openEl && openEl !== wrap) openEl.classList.remove('open')
+          wrap.classList.toggle('open')
+          openEl = wrap.classList.contains('open') ? wrap : null
+        })
+        map.addChild(new YMapMarker({ coordinates: [p.lng, p.lat] }, wrap))
       })
+    }).catch(() => {
+      // Yandex script failed to load (bad key / offline); leave the
+      // container empty rather than throwing an unhandled rejection.
     })
     return () => {
       if (map) map.destroy()

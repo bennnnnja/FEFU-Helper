@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
-import { dictionaries, type Lang, type TranslationKey } from '../i18n'
+import { dictionaries, LANGS, type Lang, type TranslationKey } from '../i18n'
 
 interface LangContextValue {
   lang: Lang
@@ -14,7 +14,7 @@ const STORAGE_KEY = 'fefu-lang'
 
 function getInitialLang(): Lang {
   const stored = localStorage.getItem(STORAGE_KEY)
-  if (stored === 'ru' || stored === 'en') return stored
+  if (stored === 'ru' || stored === 'en' || stored === 'zh') return stored
   return 'ru'
 }
 
@@ -27,7 +27,9 @@ export function LangProvider({ children }: { children: ReactNode }) {
   }, [lang])
 
   const setLang = (l: Lang) => setLangState(l)
-  const toggleLang = () => setLangState((p) => (p === 'ru' ? 'en' : 'ru'))
+  // Cycle through the available languages: ru -> en -> zh -> ru
+  const toggleLang = () =>
+    setLangState((p) => LANGS[(LANGS.indexOf(p) + 1) % LANGS.length])
   const t = (key: TranslationKey) => dictionaries[lang][key] ?? key
 
   return (
