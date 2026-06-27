@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import { useLang } from '../context/LangContext'
@@ -132,7 +132,13 @@ function ensureYandexMarkerStyles() {
   document.head.appendChild(style)
 }
 
-function YandexMap({ points, center, zoom = 15, className = '' }: MapViewProps) {
+function YandexMap({
+  points,
+  center,
+  zoom = 15,
+  className = '',
+  onError,
+}: MapViewProps & { onError?: () => void }) {
   const { lang } = useLang()
   const ref = useRef<HTMLDivElement>(null)
 
@@ -169,8 +175,9 @@ function YandexMap({ points, center, zoom = 15, className = '' }: MapViewProps) 
         map.addChild(new YMapMarker({ coordinates: [p.lng, p.lat] }, wrap))
       })
     }).catch(() => {
-      // Yandex script failed to load (bad key / offline); leave the
-      // container empty rather than throwing an unhandled rejection.
+      // Yandex script failed to load (bad key / IP restriction / offline).
+      // Fall back to OpenStreetMap so a map is always shown.
+      onError?.()
     })
     return () => {
       if (map) map.destroy()
@@ -182,8 +189,12 @@ function YandexMap({ points, center, zoom = 15, className = '' }: MapViewProps) 
 }
 
 export default function MapView(props: MapViewProps) {
-  if (USE_YANDEX_MAPS && import.meta.env.VITE_YANDEX_MAPS_KEY) {
-    return <YandexMap {...props} />
+  const [yandexFailed, setYandexFailed] = useState(false)
+  const useYandex =
+    USE_YANDEX_MAPS && !!import.meta.env.VITE_YANDEX_MAPS_KEY && !yandexFailed
+
+  if (useYandex) {
+    return <YandexMap {...props} onError={() => setYandexFailed(true)} />
   }
   return <LeafletMap {...props} />
 }
