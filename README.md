@@ -13,8 +13,7 @@ functional**, the rest are clickable prototypes with mock data.
 - **Vite + React + TypeScript**
 - **Tailwind CSS** (тёмная тема через `darkMode: 'class'`)
 - **React Router** для навигации
-- **react-leaflet + OpenStreetMap** для карт (без ключа). Опциональная
-  поддержка **Яндекс.Карт JS API v3** — см. ниже
+- **react-leaflet + OpenStreetMap** для карт (без ключа)
 - **lucide-react** для иконок
 - Без бэкенда: данные в JSON-файлах (`src/data`) и React state
 
@@ -44,24 +43,12 @@ npm run preview  # предпросмотр сборки
 **модалка погоды** с рекомендацией по одежде
 ([Open-Meteo API](https://open-meteo.com/), без ключа).
 
-## Карта: Яндекс.Карты (по умолчанию)
+## Карта: OpenStreetMap
 
-Карта использует **Яндекс.Карты JS API v3**. Чтобы она работала, нужен
-бесплатный API-ключ:
-
-1. Зайдите в [кабинет разработчика Яндекса](https://developer.tech.yandex.ru/)
-   и получите **бесплатный** ключ для сервиса
-   **«JavaScript API и HTTP Геокодер»** (*API JavaScript and Geocoder HTTP*).
-2. Скопируйте `.env.example` в `.env` и вставьте ключ:
-   ```env
-   VITE_YANDEX_MAPS_KEY=ваш_ключ
-   ```
-3. Перезапустите `npm run dev` (Vite читает `.env` при старте).
-
-Переключатель источника карты — константа `USE_YANDEX_MAPS` в
-`src/components/MapView.tsx` (по умолчанию `true`). Если ключа нет или
-поставить `false` — приложение автоматически использует бесплатный
-**OpenStreetMap + Leaflet** (без ключа).
+Карта (`src/components/MapView.tsx`) использует **OpenStreetMap + Leaflet**
+([react-leaflet](https://react-leaflet.js.org/)) — **ключ API не нужен**,
+всё работает «из коробки». Точки кампуса и города — в
+`src/data/campusPoints.json` и `src/data/cityPoints.json`.
 
 ## Прототипы / Prototype screens
 

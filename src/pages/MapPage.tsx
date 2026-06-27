@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import TopBar from '../components/TopBar'
-import MapView, { USE_YANDEX_MAPS } from '../components/MapView'
+import MapView from '../components/MapView'
 import CategoryFilter, { type FilterOption } from '../components/CategoryFilter'
 import { useLang } from '../context/LangContext'
 import campusPoints from '../data/campusPoints.json'
@@ -27,9 +27,6 @@ export default function MapPage() {
       <TopBar title={t('mapTitle')} />
       <div className="px-4 pb-3">
         <CategoryFilter options={filters} active={active} onChange={setActive} />
-        {!USE_YANDEX_MAPS && (
-          <p className="text-[11px] text-slate-400 mt-2">{t('mapFallbackNote')}</p>
-        )}
       </div>
       <div className="flex-1 min-h-[320px]">
         <MapView points={points} center={[43.0254, 131.8916]} zoom={15} />
