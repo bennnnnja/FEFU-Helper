@@ -6,11 +6,42 @@ export interface TranslateResult {
 }
 
 /**
- * Optional contact email for the MyMemory API. Providing one raises the
- * free daily quota (anonymous use is limited and starts returning bad /
- * garbage matches once exhausted). Change it to your own address if needed.
+ * Optional contact email for the MyMemory fallback API. Providing one
+ * raises the free daily quota. Change it to your own address if needed.
  */
 const MYMEMORY_EMAIL = 'fefu.helper.demo@gmail.com'
+
+/** Provider-specific language codes. */
+const GOOGLE_CODES: Record<TranslateLang, string> = { en: 'en', ru: 'ru', zh: 'zh-CN' }
+
+/* -------------------------------------------------------------------------- */
+/*  Primary provider: Google Translate (free public "gtx" endpoint, no key)   */
+/* -------------------------------------------------------------------------- */
+
+async function googleTranslate(
+  text: string,
+  source: TranslateLang,
+  target: TranslateLang,
+): Promise<string> {
+  const url =
+    'https://translate.googleapis.com/translate_a/single?client=gtx' +
+    `&sl=${GOOGLE_CODES[source]}&tl=${GOOGLE_CODES[target]}&dt=t&q=` +
+    encodeURIComponent(text)
+
+  const res = await fetch(url)
+  if (!res.ok) throw new Error('google request failed')
+  const data = await res.json()
+  // Response shape: [[["译文","source", ...], ...], ...]
+  const segments = data?.[0]
+  if (!Array.isArray(segments)) throw new Error('bad google response')
+  const out = segments.map((s: any[]) => (s && s[0]) || '').join('')
+  if (!out.trim()) throw new Error('empty google translation')
+  return out
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Fallback provider: MyMemory (free, no key, but lower quality)              */
+/* -------------------------------------------------------------------------- */
 
 interface MyMemoryMatch {
   translation?: string
@@ -19,52 +50,54 @@ interface MyMemoryMatch {
   'created-by'?: string
 }
 
-/** Detect MyMemory quota / warning strings that come back as "translations". */
 function isWarning(text: string): boolean {
   const t = text.toUpperCase()
   return t.includes('MYMEMORY WARNING') || t.includes('QUOTA') || t.includes('INVALID')
 }
 
-/**
- * Pick the best translation from a MyMemory response.
- *
- * MyMemory's `responseData.translatedText` is just the top translation-memory
- * match, which is often a low-quality, user-contributed entry (this is what
- * produced nonsense like "САША БИБЛИОТЕКА ПОЗОРНАЯ"). The `matches` array also
- * contains the actual machine-translation result (`created-by` = "MT!"), which
- * is far more reliable. We prefer the MT entry, then the highest-scoring clean
- * match, and only fall back to translatedText.
- */
-function pickTranslation(data: any): string {
+/** Prefer the machine-translation match over noisy translation-memory hits. */
+function pickMyMemory(data: any): string {
   const fallback: string = data?.responseData?.translatedText ?? ''
   const matches: MyMemoryMatch[] = Array.isArray(data?.matches) ? data.matches : []
-
   const clean = matches.filter(
     (m): m is MyMemoryMatch & { translation: string } =>
       typeof m.translation === 'string' && m.translation.trim() !== '' && !isWarning(m.translation),
   )
-
-  // 1. Prefer the machine-translation entry.
   const mt = clean.find((m) => String(m['created-by'] ?? '').toUpperCase().includes('MT'))
   if (mt) return mt.translation
-
-  // 2. Otherwise the highest-scoring match (match score, then quality).
   if (clean.length) {
     clean.sort(
       (a, b) =>
-        (b.match ?? 0) - (a.match ?? 0) ||
-        Number(b.quality ?? 0) - Number(a.quality ?? 0),
+        (b.match ?? 0) - (a.match ?? 0) || Number(b.quality ?? 0) - Number(a.quality ?? 0),
     )
     return clean[0].translation
   }
-
-  // 3. Last resort: the raw translatedText (unless it's a warning).
   return isWarning(fallback) ? '' : fallback
 }
 
+async function myMemoryTranslate(
+  text: string,
+  source: TranslateLang,
+  target: TranslateLang,
+): Promise<string> {
+  const params = new URLSearchParams({ q: text, langpair: `${source}|${target}`, mt: '1' })
+  if (MYMEMORY_EMAIL) params.set('de', MYMEMORY_EMAIL)
+  const res = await fetch('https://api.mymemory.translated.net/get?' + params.toString())
+  if (!res.ok) throw new Error('mymemory request failed')
+  const data = await res.json()
+  if (data?.responseStatus && Number(data.responseStatus) !== 200) {
+    throw new Error('mymemory api error')
+  }
+  const out = pickMyMemory(data)
+  if (!out) throw new Error('empty mymemory translation')
+  return out
+}
+
+/* -------------------------------------------------------------------------- */
+
 /**
- * Translate text using the free MyMemory API (no key required).
- * langpair format: source|target, e.g. en|zh
+ * Translate text. Tries Google Translate first (reliable, correct target
+ * language), then falls back to MyMemory if Google is unreachable.
  */
 export async function translateText(
   text: string,
@@ -76,23 +109,13 @@ export async function translateText(
   if (source === target) return { text: trimmed }
 
   try {
-    const params = new URLSearchParams({
-      q: trimmed,
-      langpair: `${source}|${target}`,
-      mt: '1', // ask for machine translation
-    })
-    if (MYMEMORY_EMAIL) params.set('de', MYMEMORY_EMAIL)
+    return { text: await googleTranslate(trimmed, source, target) }
+  } catch {
+    // Google blocked/unreachable — try the fallback provider.
+  }
 
-    const res = await fetch('https://api.mymemory.translated.net/get?' + params.toString())
-    if (!res.ok) throw new Error('translate request failed')
-    const data = await res.json()
-    if (data?.responseStatus && Number(data.responseStatus) !== 200) {
-      throw new Error('translate api error')
-    }
-
-    const translated = pickTranslation(data)
-    if (!translated) throw new Error('empty translation')
-    return { text: translated }
+  try {
+    return { text: await myMemoryTranslate(trimmed, source, target) }
   } catch (e) {
     return { text: '', error: e instanceof Error ? e.message : 'translate error' }
   }
